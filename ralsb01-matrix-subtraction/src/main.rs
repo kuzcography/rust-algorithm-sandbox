@@ -8,7 +8,7 @@ fn create_matrix(rows: usize, cols: usize) -> Vec<Vec<i32>> {
         let mut mrows: Vec<i32> = Vec::with_capacity(cols);
         for j in 0..cols {
             input.clear();
-            println!("Enter element ({}, {}):", i + 1, j + 1);
+            println!("Enter element ({}, {}):", i, j);
             io::stdin().read_line(&mut input).expect("Reading error");
             let value: i32 = input.trim().parse().expect("Please enter an integer");
             mrows.push(value);
@@ -22,7 +22,7 @@ fn matrix_addition(rows: usize, cols: usize,matrix_a: &Vec<Vec<i32>>, matrix_b: 
     let mut matrix = vec![vec![0; cols]; rows];
     for i in 0..rows {
         for j in 0..cols {
-            matrix[i][j] = matrix_a[i][j] + matrix_b[i][j]
+            matrix[i][j] = matrix_a[i][j] - matrix_b[i][j]
         }
     }
     matrix
@@ -42,7 +42,8 @@ fn main(){
     let add = matrix_addition(2,2,&matrix_a,&matrix_b);
     for i in 0..2{
         for j in 0..2{
-            println!("{}", add[i][j]);
+            print!(" {} ", add[i][j]);
         }
+        println!();
     }
 }
